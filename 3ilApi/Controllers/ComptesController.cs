@@ -9,7 +9,7 @@ using _3ilApi.Models;
 
 namespace _3ilApi.Controllers
 {
-    [Route("api/[Comptes]")]
+    [Route("api/[Controller]")]
     [ApiController]
     public class ComptesController : ControllerBase
     {

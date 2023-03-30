@@ -5,6 +5,6 @@
         public int CompteId { get; set; }
         public string CompteName { get; set; }
         public string Referentielle { get; set; }
-        public DateTime CreatedDate { get; set; }   
+        public string CreatedDate { get; set; }
     }
 }

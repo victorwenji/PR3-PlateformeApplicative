@@ -1,14 +1,14 @@
+using _3ilApi2._0.Models;
 using Microsoft.EntityFrameworkCore;
-using  _3ilApi.Models;
-using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<_3ilContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-//opt.UseInMemoryDatabase("CompteList"));
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
+builder.Services.AddDbContext<EtudiantContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -17,7 +17,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
- 
+
 app.MapControllers();
 
 app.Run();
