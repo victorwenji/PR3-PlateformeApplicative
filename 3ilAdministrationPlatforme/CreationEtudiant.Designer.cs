@@ -40,6 +40,7 @@
             this.tbPrenom = new System.Windows.Forms.TextBox();
             this.tbRef = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnclose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lb_id
@@ -101,27 +102,28 @@
             this.btnsave.TabIndex = 7;
             this.btnsave.Text = "CREATE";
             this.btnsave.UseVisualStyleBackColor = true;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // tbId
             // 
             this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbId.Location = new System.Drawing.Point(127, 36);
+            this.tbId.Location = new System.Drawing.Point(245, 39);
             this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(422, 34);
+            this.tbId.Size = new System.Drawing.Size(370, 34);
             this.tbId.TabIndex = 8;
             // 
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(145, 106);
+            this.tbName.Location = new System.Drawing.Point(245, 124);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(404, 34);
+            this.tbName.Size = new System.Drawing.Size(370, 34);
             this.tbName.TabIndex = 9;
             // 
             // tbPrenom
             // 
             this.tbPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrenom.Location = new System.Drawing.Point(180, 173);
+            this.tbPrenom.Location = new System.Drawing.Point(246, 183);
             this.tbPrenom.Name = "tbPrenom";
             this.tbPrenom.Size = new System.Drawing.Size(369, 34);
             this.tbPrenom.TabIndex = 10;
@@ -129,9 +131,9 @@
             // tbRef
             // 
             this.tbRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRef.Location = new System.Drawing.Point(224, 228);
+            this.tbRef.Location = new System.Drawing.Point(246, 236);
             this.tbRef.Name = "tbRef";
-            this.tbRef.Size = new System.Drawing.Size(325, 34);
+            this.tbRef.Size = new System.Drawing.Size(369, 34);
             this.tbRef.TabIndex = 11;
             // 
             // dateTimePicker1
@@ -139,8 +141,19 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(245, 276);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(304, 34);
+            this.dateTimePicker1.Size = new System.Drawing.Size(370, 34);
             this.dateTimePicker1.TabIndex = 12;
+            // 
+            // btnclose
+            // 
+            this.btnclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclose.Location = new System.Drawing.Point(12, 399);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(152, 39);
+            this.btnclose.TabIndex = 13;
+            this.btnclose.Text = "CLOSE";
+            this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // CreationEtudiant
             // 
@@ -148,6 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnclose);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.tbRef);
             this.Controls.Add(this.tbPrenom);
@@ -183,5 +197,6 @@
         private System.Windows.Forms.TextBox tbPrenom;
         private System.Windows.Forms.TextBox tbRef;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnclose;
     }
 }

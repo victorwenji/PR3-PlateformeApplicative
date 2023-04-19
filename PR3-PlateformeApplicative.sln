@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3ilApi", "3ilApi\3ilApi.csproj", "{CA8DE7B8-5D93-438C-90B0-44EF932DAF6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3ilApi2.0", "3ilApi2.0\3ilApi2.0.csproj", "{3E7C9A8F-5CDA-4A8A-89E6-AB2121786C09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3ilApi2.0", "3ilApi2.0\3ilApi2.0.csproj", "{3E7C9A8F-5CDA-4A8A-89E6-AB2121786C09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3ilAdministrationPlatforme", "3ilAdministrationPlatforme\3ilAdministrationPlatforme.csproj", "{A68D21BD-0183-4AA8-B94A-FDAC400A2DC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile.csproj", "{7B6DA628-6548-49D4-8026-DBDA2D660DC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{A68D21BD-0183-4AA8-B94A-FDAC400A2DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A68D21BD-0183-4AA8-B94A-FDAC400A2DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A68D21BD-0183-4AA8-B94A-FDAC400A2DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
