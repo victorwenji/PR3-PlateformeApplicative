@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3ilApi2.0", "3ilApi2.0\3ilA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3ilAdministrationPlatforme", "3ilAdministrationPlatforme\3ilAdministrationPlatforme.csproj", "{A68D21BD-0183-4AA8-B94A-FDAC400A2DC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile.csproj", "{7B6DA628-6548-49D4-8026-DBDA2D660DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobile", "Mobile\Mobile.csproj", "{7B6DA628-6548-49D4-8026-DBDA2D660DC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiEnd", "ApiEnd\ApiEnd.csproj", "{E4F652FD-2741-4A7B-9FD3-22F140A60AC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B6DA628-6548-49D4-8026-DBDA2D660DC4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E4F652FD-2741-4A7B-9FD3-22F140A60AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F652FD-2741-4A7B-9FD3-22F140A60AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4F652FD-2741-4A7B-9FD3-22F140A60AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4F652FD-2741-4A7B-9FD3-22F140A60AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
