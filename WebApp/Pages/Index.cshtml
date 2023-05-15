@@ -1,0 +1,44 @@
+﻿@*@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@*<div class="text-center">
+    <h1 class="display-4">Login</h1>
+    
+</div>*@
+<form method="post" action="@Url.Action("Login", "Account")">
+    <h1> Login </h1>
+    <div>
+        @if (Model != null && Model.IsError)
+        {
+            <div class="alert alert-danger" role="alert">
+                @Model.Message
+            </div>
+        }
+    </div>
+
+    <div>
+        <LAbel><b> Email  </b></LAbel>
+        <div>
+            <input value="@(Model != null ? Model.Email : "")" type="text" placeholder="entre votre adresse email " name="Email" required>
+        </div>
+    </div>
+    <br>
+    <div>
+        <LAbel><b> Password </b></LAbel>
+        <div>
+            <input type="password" placeholder="entre votre mot de passe " name="Password" required>
+            <br>
+            <a href="~/Account/forgetpassword">forgot password!</a>
+        </div>
+        <br>
+        <a href="@Url.Action("Index", "Home")">
+            <input type="submit" id="submit" value="Connect">
+        </a>
+        <br>
+        <a href="@Url.Action("register", "Account")">
+            <input type="submit" id="submit" value="Cree un Compte">
+        </a>
+    </div>
+</form>

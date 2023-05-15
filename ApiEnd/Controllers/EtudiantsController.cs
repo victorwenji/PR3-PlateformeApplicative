@@ -12,55 +12,55 @@ namespace ApiEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PresencesController : ControllerBase
+    public class EtudiantsController : ControllerBase
     {
         private readonly AllContext _context;
 
-        public PresencesController(AllContext context)
+        public EtudiantsController(AllContext context)
         {
             _context = context;
         }
 
-        // GET: api/Presences
+        // GET: api/Etudiants
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Presence>>> GetPresences()
+        public async Task<ActionResult<IEnumerable<Etudiant>>> GetEleves()
         {
-          if (_context.Presences == null)
+          if (_context.Eleves == null)
           {
               return NotFound();
           }
-            return await _context.Presences.ToListAsync();
+            return await _context.Eleves.ToListAsync();
         }
 
-        // GET: api/Presences/5
+        // GET: api/Etudiants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Presence>> GetPresence(int id)
+        public async Task<ActionResult<Etudiant>> GetEtudiant(int id)
         {
-          if (_context.Presences == null)
+          if (_context.Eleves == null)
           {
               return NotFound();
           }
-            var presence = await _context.Presences.FindAsync(id);
+            var etudiant = await _context.Eleves.FindAsync(id);
 
-            if (presence == null)
+            if (etudiant == null)
             {
                 return NotFound();
             }
 
-            return presence;
+            return etudiant;
         }
 
-        // PUT: api/Presences/5
+        // PUT: api/Etudiants/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPresence(int id, Presence presence)
+        public async Task<IActionResult> PutEtudiant(int id, Etudiant etudiant)
         {
-            if (id != presence.Id)
+            if (id != etudiant.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(presence).State = EntityState.Modified;
+            _context.Entry(etudiant).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace ApiEnd.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PresenceExists(id))
+                if (!EtudiantExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace ApiEnd.Controllers
             return NoContent();
         }
 
-        // POST: api/Presences
+        // POST: api/Etudiants
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Presence>> PostPresence(Presence presence)
+        public async Task<ActionResult<Etudiant>> PostEtudiant(Etudiant etudiant)
         {
-          if (_context.Presences == null)
+          if (_context.Eleves == null)
           {
-              return Problem("Entity set 'AllContext.Presences'  is null.");
+              return Problem("Entity set 'AllContext.Eleves'  is null.");
           }
-            _context.Presences.Add(presence);
+            _context.Eleves.Add(etudiant);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPresence", new { id = presence.Id }, presence);
+            return CreatedAtAction("GetEtudiant", new { id = etudiant.Id }, etudiant);
         }
 
-        // DELETE: api/Presences/5
+        // DELETE: api/Etudiants/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePresence(int id)
+        public async Task<IActionResult> DeleteEtudiant(int id)
         {
-            if (_context.Presences == null)
+            if (_context.Eleves == null)
             {
                 return NotFound();
             }
-            var presence = await _context.Presences.FindAsync(id);
-            if (presence == null)
+            var etudiant = await _context.Eleves.FindAsync(id);
+            if (etudiant == null)
             {
                 return NotFound();
             }
 
-            _context.Presences.Remove(presence);
+            _context.Eleves.Remove(etudiant);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PresenceExists(int id)
+        private bool EtudiantExists(int id)
         {
-            return (_context.Presences?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Eleves?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
