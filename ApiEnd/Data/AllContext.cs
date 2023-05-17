@@ -16,5 +16,7 @@ namespace ApiEnd.Data
         public DbSet<Administrateurs> Administrateurs { get; set; } = null!;
         public DbSet<Coordinateurs> Coordinateurs { get; set; } = null!;
         public DbSet<Presence> Presences { get; set; } = null!;
+        public DbSet<ApiEnd.Models.Groupe> Groupe { get; set; } = default!;
+        public DbSet<ApiEnd.Models.Promotion> Promotion { get; set; } = default!;
     }
 }

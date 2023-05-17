@@ -8,11 +8,14 @@ namespace ApiEnd.Models
         public string Nom { get; set; }
         public string Prenom { get; set; } = string.Empty;
 
-        [ForeignKey("Groupe")]
-        public string GroupeId { get; set; }
+        [ForeignKey("GroupeId")]
+        //pourquoi crée groupr de type groupe
+        public Groupe Groupes { get; set; }
+        public int GroupeId { get; set; }
 
-        [ForeignKey("Promotion")]
-        public string PromotionId { get; set; }
+        [ForeignKey("PromotionId")]
+        public Promotion Promotions { get; set; }
+        public int PromotionId { get; set; }
         public Etudiant()
         {
             

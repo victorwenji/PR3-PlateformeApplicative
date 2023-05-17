@@ -7,8 +7,16 @@ namespace ApiEnd.Models
         public int Id { get; set; }
         public DateTime HeureDate { get; set; }
 
+        public enum Statuts 
+        {
+            Present, //0
+            Absent //1  
+        }
+
         [ForeignKey("Etudiant")]
-        public string EtudiantId { get; set; }
+        //pourqoui la redondance de donnée
+        public Etudiant Etudiants { get; set; }
+        public int EtudiantId { get; set; }
         public Presence()
         {
             

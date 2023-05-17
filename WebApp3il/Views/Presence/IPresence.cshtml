@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using ApiEnd.Models;
+@using System.Data;
+@model DataTable
+@{
+    ViewData["Title"] = "Presence des Etudiant";
+}
+@{
+    var ListeEtudiant = ViewData["Etudiant"] as List<Etudiant>;
+    var ListePresence = ViewData["Groupe"] as List<Presence>;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <div class="text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayName("Nom")</th>
+                    <th>@Html.DisplayName("Prenom")</th>
+                    <th>@Html.DisplayName("Presence")</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Etudiant row1 in ListeEtudiant)
+                {
+                    @foreach (Presence row2 in ListePresence)
+                    {
+                        @if (row2.EtudiantId == row1.Id)
+                        {
+                            <tr>
+                                <td>@row1.Nom</td>
+                                <td>@row1.Prenom</td>
+
+                            </tr>
+                        }
+                    }
+                }
+                }
+</p>
+

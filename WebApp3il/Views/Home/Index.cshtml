@@ -1,0 +1,67 @@
+﻿@using System.Data
+@using ApiEnd.Models;
+@model DataTable
+@{ 
+    var ListeEtudiant = ViewData["Etudiant"] as List<Etudiant>;
+    var ListeGroupe = ViewData["Groupe"] as List<Groupe>;
+    var ListePromotion = ViewData["Promotion"] as List<Promotion>;
+}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayName("Nom")</th>
+                <th>@Html.DisplayName("Prenom")</th>
+                <th>@Html.DisplayName("Groupe")</th>
+                <th>@Html.DisplayName("Promotion")</th>
+                <th>@Html.DisplayName("Groupeid")</th>
+                <th>@Html.DisplayName("Promotionid")</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Etudiant row1 in ListeEtudiant)
+            {
+                @foreach (Groupe row2 in ListeGroupe)
+                {
+                    @foreach (Promotion row3 in ListePromotion)
+                    {
+                        @if (row1.GroupeId == row2.Id & row1.PromotionId == row3.Id)
+                        {
+                            <tr>
+                                <td>@row1.Nom</td>
+                                <td>@row1.Prenom</td>
+                                <td>@row2.Name</td>
+                                <td>@row3.Year</td>
+                                <td>@row1.GroupeId</td>
+                                <td>@row1.PromotionId</td>
+
+                            </tr>
+                        }
+                    }
+                }  
+            }
+           @* @if(ListeEtudiant != null)
+            {
+                
+            }*@
+        </tbody>
+    </table>
+</div>
