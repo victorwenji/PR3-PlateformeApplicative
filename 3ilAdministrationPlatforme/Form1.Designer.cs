@@ -51,7 +51,7 @@
             // 
             this.lb_recherche.AutoSize = true;
             this.lb_recherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_recherche.Location = new System.Drawing.Point(12, 99);
+            this.lb_recherche.Location = new System.Drawing.Point(12, 110);
             this.lb_recherche.Name = "lb_recherche";
             this.lb_recherche.Size = new System.Drawing.Size(148, 29);
             this.lb_recherche.TabIndex = 1;
@@ -64,13 +64,13 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(759, 670);
+            this.dataGridView1.Size = new System.Drawing.Size(1187, 670);
             this.dataGridView1.TabIndex = 2;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(166, 94);
+            this.textBox1.Location = new System.Drawing.Point(166, 107);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(404, 34);
             this.textBox1.TabIndex = 3;
@@ -78,7 +78,7 @@
             // btnsave
             // 
             this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsave.Location = new System.Drawing.Point(999, 150);
+            this.btnsave.Location = new System.Drawing.Point(1047, 105);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(152, 39);
             this.btnsave.TabIndex = 4;
