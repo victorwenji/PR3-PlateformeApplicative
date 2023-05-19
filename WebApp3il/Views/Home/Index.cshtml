@@ -21,18 +21,63 @@
 
     tr:nth-child(even) {
         background-color: #dddddd;
+
+    }
+
+    .filter-input {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
     }
 </style>
+<script>
+    function filterTable() {
+        var input = document.getElementById("filterInput").value.toUpperCase();
+        var table = document.getElementById("etudiantTable");
+        var tr = table.getElementsByTagName("tr");
+        for (var i = 0; i < tr.length; i++) {
+            var tdNom = tr[i].getElementsByTagName("td")[0];
+            var tdGroupe = tr[i].getElementsByTagName("td")[3];
+            var tdPromotion = tr[i].getElementsByTagName("td")[4];
+            if (tdNom || tdGroupe || tdPromotion) {
+                var nom = tdNom.textContent || tdNom.innerText;
+                var groupe = tdGroupe.textContent || tdGroupe.innerText;
+                var promotion = tdPromotion.textContent || tdPromotion.innerText;
+                if (nom.toUpperCase().indexOf(input) > -1 ||
+                            groupe.toUpperCase().indexOf(input) > -1 ||
+                        promotion.toUpperCase().indexOf(input) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<center>
+    <h2>
+        Liste des étudiants
+    </h2>
+</center>
+<div>
+    <h4>
+        <label for="filterInput">Recherche : </label>
+        <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Rechercher par groupe, nom ou promotion...">
+    </h4>
+    <br />
+</div>
 <div class="text-center">
-    <table class="table">
+    <table id="etudiantTable" class="table">
         <thead>
             <tr>
                 <th>@Html.DisplayName("Nom")</th>
                 <th>@Html.DisplayName("Prenom")</th>
+                <th>@Html.DisplayName("Email")</th>
                 <th>@Html.DisplayName("Groupe")</th>
                 <th>@Html.DisplayName("Promotion")</th>
-                <th>@Html.DisplayName("Groupeid")</th>
-                <th>@Html.DisplayName("Promotionid")</th>
+               
 
             </tr>
         </thead>
@@ -48,11 +93,10 @@
                             <tr>
                                 <td>@row1.Nom</td>
                                 <td>@row1.Prenom</td>
+                                <td>@row1.Email</td>
                                 <td>@row2.Name</td>
                                 <td>@row3.Year</td>
-                                <td>@row1.GroupeId</td>
-                                <td>@row1.PromotionId</td>
-
+                                
                             </tr>
                         }
                     }

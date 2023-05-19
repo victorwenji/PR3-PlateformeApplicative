@@ -22,6 +22,8 @@ namespace WebApp3il.Controllers
             List<Etudiant> Etudiants = new List<Etudiant>();
             List<Groupe> Groupes = new List<Groupe>();
             List<Promotion> Promotions = new List<Promotion>();
+            List<Presence> Presences = new List<Presence>();
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseURL);
@@ -31,7 +33,7 @@ namespace WebApp3il.Controllers
                 HttpResponseMessage getData1 = await client.GetAsync("api/Etudiants");
                 HttpResponseMessage getData2 = await client.GetAsync("api/Groupes");
                 HttpResponseMessage getData3 = await client.GetAsync("api/Promotions");
-
+                HttpResponseMessage getData4 = await client.GetAsync("api/Presences");
 
                 if (getData1.IsSuccessStatusCode)
                 {
@@ -44,7 +46,8 @@ namespace WebApp3il.Controllers
                     string results3 = getData3.Content.ReadAsStringAsync().Result;
                     Promotions = JsonConvert.DeserializeObject<List<Promotion>>(results3);
 
-
+                    string results4 = getData4.Content.ReadAsStringAsync().Result;
+                    Presences = JsonConvert.DeserializeObject<List<Presence>>(results4);
                 }
                 else
                 {
@@ -54,15 +57,50 @@ namespace WebApp3il.Controllers
                 ViewData["Etudiant"] = Etudiants;
                 ViewData["Groupe"] = Groupes;
                 ViewData["Promotion"] = Promotions;
-
-
-
+                ViewData["Presence"] = Presences;
             }
             return View();
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public async Task<IActionResult> PresenceAsync()
+        {
+            List<Presence> Presences = new List<Presence>();
+            List<Etudiant> Etudiants = new List<Etudiant>();
+
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseURL);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage getData = await client.GetAsync("api/Presences");
+                HttpResponseMessage getData1 = await client.GetAsync("api/Etudiants");
+
+
+                if (getData.IsSuccessStatusCode)
+                {
+
+                    string results = getData.Content.ReadAsStringAsync().Result;
+                    Presences = JsonConvert.DeserializeObject<List<Presence>>(results);
+
+                    string results1 = getData1.Content.ReadAsStringAsync().Result;
+                    Etudiants = JsonConvert.DeserializeObject<List<Etudiant>>(results1);
+                }
+                else
+                {
+                    Console.WriteLine("erreur calling web API");
+                }
+
+                ViewData["Presence"] = Presences;
+                ViewData["Etudiant"] = Etudiants;
+
+            }
             return View();
         }
 

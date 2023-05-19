@@ -1,0 +1,131 @@
+﻿
+    @using System.Data
+@using ApiEnd.Models;
+@model DataTable;
+@{ 
+    var ListeEtudiant = ViewData["Etudiant"] as List<Etudiant>;
+    var ListePresence = ViewData["Presence"] as List<Presence>;
+
+    string GetStatus(bool Status)
+    {
+        if (Status == true)
+        {
+            return "Present";
+        }
+        else
+        {
+            return "Absent";
+        }
+    }
+
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .filter-input {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+    }
+</style>
+<script>
+    function filterTable() {
+        var input = document.getElementById("filterInput").value.toUpperCase();
+        var table = document.getElementById("etudiantTable");
+        var tr = table.getElementsByTagName("tr");
+        for (var i = 0; i < tr.length; i++) {
+            var tdNom = tr[i].getElementsByTagName("td")[0];
+            var tdStatus = tr[i].getElementsByTagName("td")[3];
+            if (tdNom || tdStatus ) {
+                var nom = tdNom.textContent || tdNom.innerText;
+                var status = tdStatus.textContent || tdStatus.innerText;
+                if (nom.toUpperCase().indexOf(input) > -1 ||
+                    status.toUpperCase().indexOf(input) > -1 ) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    //$(document).ready(function () {
+    //    $.fn.dataTable.moment('DD/MM/YY');
+
+    //    $('.happyTable').DataTable();
+    //});
+</script>
+
+    <center>
+        <h2>
+            Liste des émagement et des présences
+        </h2>
+    </center>
+    <div>
+        <h4>
+            <label for="filterInput">Recherche : </label>
+            <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Rechercher par groupe, nom ou promotion...">
+        </h4>
+    <br />
+    </div>
+<div class="text-center">
+    <table id="etudiantTable" class="happyTable">
+        <thead>
+            <tr>
+                <th>@Html.DisplayName("Nom")</th>
+                <th>@Html.DisplayName("Prenom")</th>
+                <th>@Html.DisplayName("Emagement")</th>
+                <th>@Html.DisplayName("Status")</th>
+
+               
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Presence row1 in ListePresence)
+            {
+                @foreach (Etudiant row2 in ListeEtudiant)
+                {
+                    
+                    
+                    @if (row1.EtudiantId == row2.Id )
+                    {
+                        <tr>
+                            <td>@row2.Nom</td>
+                            <td>@row2.Prenom</td>
+                            <td>@row1.HeureDate</td>
+                            @{
+                                string OldStatus = GetStatus(row1.Status);
+                                string NewStatus= (OldStatus == "Absent")? "text-danger" : "text-success";          
+                            }
+                            <td class="@NewStatus">@OldStatus</td>    
+                        </tr>
+                    }
+                    
+                }  
+            }
+           @* @if(ListeEtudiant != null)
+            {
+                
+            }*@
+        </tbody>
+    </table>
+</div>
+
+}
