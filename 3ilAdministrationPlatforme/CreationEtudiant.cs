@@ -18,27 +18,31 @@ namespace _3ilAdministrationPlatforme
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=3il2;integrated security=True;TrustServerCertificate=True");
         private void btnsave_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=3il2;integrated security=True;TrustServerCertificate=True");
-            int ID = int.Parse(tbId.Text);
-            string name = tbName.Text;
-            string Prennom = tbPrenom.Text;
-            string Ref = tbRef.Text;
-            DateTime dateTime = DateTime.Parse(dateTimePicker1.Text) ;
-            con.Open();
-            SqlCommand c = new SqlCommand("exec Insert_E '" + ID + "','" + name + "','" + Prennom + "','" + Ref + "','" + dateTime + "'");
-            c.ExecuteNonQueryAsync();
-            MessageBox.Show("Etudiant Enregistre....");
-            con.Close();
+            //SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=3il2;integrated security=True;TrustServerCertificate=True");
+            //int ID = int.Parse(tbId.Text);
+            //string name = tbName.Text;
+            //string Prennom = tbPrenom.Text;
+            //string Ref = tbEmail.Text;
+            //DateTime dateTime = DateTime.Parse(dateTimePicker1.Text) ;
+            //con.Open();
+            //SqlCommand c = new SqlCommand("exec Insert_E '" + ID + "','" + name + "','" + Prennom + "','" + Ref + "','" + dateTime + "'");
+            //c.ExecuteNonQueryAsync();
+            //MessageBox.Show("Etudiant Enregistre....");
+            //con.Close();
         }
 
         private void btnclose_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
-            frm.Show();
+            //Form1 frm = new Form1();
+            //frm.Show();
             this.Close();
+        }
+
+        private void CreationEtudiant_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

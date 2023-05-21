@@ -16,10 +16,10 @@ namespace _3ilAdministrationPlatforme
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            //new SplashScreen();
-            //Application.Run(); 
+            //new Form1();
+            //Application.Run();
 
-            
+
             new SplashScreen().Show();
             Application.Run();
         }

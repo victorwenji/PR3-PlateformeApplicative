@@ -35,23 +35,24 @@
             this.lbREf = new System.Windows.Forms.Label();
             this.lbdate = new System.Windows.Forms.Label();
             this.btnsave = new System.Windows.Forms.Button();
-            this.tbId = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbPrenom = new System.Windows.Forms.TextBox();
-            this.tbRef = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.btnclose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboGRoupe = new System.Windows.Forms.ComboBox();
+            this.comboPromo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lb_id
             // 
             this.lb_id.AutoSize = true;
-            this.lb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_id.Location = new System.Drawing.Point(36, 39);
+            this.lb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_id.Location = new System.Drawing.Point(281, 26);
             this.lb_id.Name = "lb_id";
-            this.lb_id.Size = new System.Drawing.Size(54, 29);
+            this.lb_id.Size = new System.Drawing.Size(207, 29);
             this.lb_id.TabIndex = 2;
-            this.lb_id.Text = "ID : ";
+            this.lb_id.Text = "Crée un Etudiant";
             // 
             // lbnom
             // 
@@ -79,19 +80,19 @@
             this.lbREf.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbREf.Location = new System.Drawing.Point(36, 228);
             this.lbREf.Name = "lbREf";
-            this.lbREf.Size = new System.Drawing.Size(163, 29);
+            this.lbREf.Size = new System.Drawing.Size(86, 29);
             this.lbREf.TabIndex = 5;
-            this.lbREf.Text = "Referentielle :";
+            this.lbREf.Text = "Email :";
             // 
             // lbdate
             // 
             this.lbdate.AutoSize = true;
             this.lbdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbdate.Location = new System.Drawing.Point(36, 281);
+            this.lbdate.Location = new System.Drawing.Point(35, 281);
             this.lbdate.Name = "lbdate";
-            this.lbdate.Size = new System.Drawing.Size(203, 29);
+            this.lbdate.Size = new System.Drawing.Size(112, 29);
             this.lbdate.TabIndex = 6;
-            this.lbdate.Text = "DateDeCreation : ";
+            this.lbdate.Text = "Groupe : ";
             // 
             // btnsave
             // 
@@ -104,45 +105,29 @@
             this.btnsave.UseVisualStyleBackColor = true;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
-            // tbId
-            // 
-            this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbId.Location = new System.Drawing.Point(245, 39);
-            this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(370, 34);
-            this.tbId.TabIndex = 8;
-            // 
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(245, 124);
+            this.tbName.Location = new System.Drawing.Point(181, 101);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(370, 34);
+            this.tbName.Size = new System.Drawing.Size(320, 34);
             this.tbName.TabIndex = 9;
             // 
             // tbPrenom
             // 
             this.tbPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrenom.Location = new System.Drawing.Point(246, 183);
+            this.tbPrenom.Location = new System.Drawing.Point(181, 170);
             this.tbPrenom.Name = "tbPrenom";
-            this.tbPrenom.Size = new System.Drawing.Size(369, 34);
+            this.tbPrenom.Size = new System.Drawing.Size(320, 34);
             this.tbPrenom.TabIndex = 10;
             // 
-            // tbRef
+            // tbEmail
             // 
-            this.tbRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRef.Location = new System.Drawing.Point(246, 236);
-            this.tbRef.Name = "tbRef";
-            this.tbRef.Size = new System.Drawing.Size(369, 34);
-            this.tbRef.TabIndex = 11;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(245, 276);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(370, 34);
-            this.dateTimePicker1.TabIndex = 12;
+            this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEmail.Location = new System.Drawing.Point(181, 225);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(320, 34);
+            this.tbEmail.TabIndex = 11;
             // 
             // btnclose
             // 
@@ -155,18 +140,54 @@
             this.btnclose.UseVisualStyleBackColor = true;
             this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(32, 331);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 29);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Promotion :";
+            // 
+            // comboGRoupe
+            // 
+            this.comboGRoupe.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboGRoupe.FormattingEnabled = true;
+            this.comboGRoupe.Items.AddRange(new object[] {
+            "MS2D-FA",
+            "MS2D-FE"});
+            this.comboGRoupe.Location = new System.Drawing.Point(181, 278);
+            this.comboGRoupe.Name = "comboGRoupe";
+            this.comboGRoupe.Size = new System.Drawing.Size(320, 37);
+            this.comboGRoupe.TabIndex = 15;
+            // 
+            // comboPromo
+            // 
+            this.comboPromo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboPromo.FormattingEnabled = true;
+            this.comboPromo.Items.AddRange(new object[] {
+            "2022-2023",
+            "2023-2024",
+            "2024-2025"});
+            this.comboPromo.Location = new System.Drawing.Point(181, 328);
+            this.comboPromo.Name = "comboPromo";
+            this.comboPromo.Size = new System.Drawing.Size(320, 37);
+            this.comboPromo.TabIndex = 16;
+            // 
             // CreationEtudiant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboPromo);
+            this.Controls.Add(this.comboGRoupe);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnclose);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.tbRef);
+            this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbPrenom);
             this.Controls.Add(this.tbName);
-            this.Controls.Add(this.tbId);
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.lbdate);
             this.Controls.Add(this.lbREf);
@@ -179,6 +200,7 @@
             this.Name = "CreationEtudiant";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreationEtudiant";
+            this.Load += new System.EventHandler(this.CreationEtudiant_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,11 +214,12 @@
         private System.Windows.Forms.Label lbREf;
         private System.Windows.Forms.Label lbdate;
         private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.TextBox tbId;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbPrenom;
-        private System.Windows.Forms.TextBox tbRef;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboGRoupe;
+        private System.Windows.Forms.ComboBox comboPromo;
     }
 }
