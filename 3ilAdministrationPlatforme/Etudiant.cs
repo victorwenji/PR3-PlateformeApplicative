@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3ilAdministrationPlatforme
 {
-    internal class Etudiantt
+    internal class Etudiant
     {
         public int Id { get; set; }
         public string Nom { get; set; }
@@ -14,9 +14,12 @@ namespace _3ilAdministrationPlatforme
         public string Email { get; set; } = string.Empty;
 
         public int GroupeId { get; set; }
-
+        
         public int PromotionId { get; set; }
-        public Etudiantt()
+
+        //public string GroupeName { get; set; }
+        //public string PromotionName { get; set; }
+        public Etudiant()
         {
 
         }

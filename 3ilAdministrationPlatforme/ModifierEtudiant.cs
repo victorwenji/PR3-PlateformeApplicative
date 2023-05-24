@@ -12,7 +12,7 @@ namespace _3ilAdministrationPlatforme
 {
     public partial class ModifierEtudiant : Form
     {
-        private Etudiantt OldEtudiantt;
+        private Etudiant OldEtudiantt;
 
         public ModifierEtudiant()
         {

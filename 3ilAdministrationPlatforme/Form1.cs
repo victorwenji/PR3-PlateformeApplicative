@@ -1,5 +1,4 @@
 ﻿ using System;
-using ApiEnd.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,16 +12,18 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Xml.Linq;
+using System.Reflection;
 
 namespace _3ilAdministrationPlatforme
 {
     public partial class Form1 : Form
     {
-        private Etudiantt OldEtudiantt;
+        private Etudiant OldEtudiantt;
         private readonly HttpClient _httpClient;
         public Form1()
         {
             InitializeComponent();
+          
         }
 
         public async void ListEtudiant(object sender, EventArgs e)
@@ -53,13 +54,23 @@ namespace _3ilAdministrationPlatforme
             //mais je n'ais pa reussi et jai du cree une classe qui reproduit le modelle d'origine
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7219");
-            HttpResponseMessage response = client.GetAsync("api/Etudiants").Result;
-            var mp = response.Content.ReadAsAsync<IEnumerable<Etudiantt>>().Result;
-            dataGridView1.DataSource = mp;
 
+            HttpResponseMessage response = client.GetAsync("api/Etudiants").Result;
+            if(response.IsSuccessStatusCode)
+            {
+
+                var mp = response.Content.ReadAsAsync<IEnumerable<Etudiant>>().Result;
+                dataGridView1.DataSource = mp;
+            }
             //le nombre de ligne
             ToTal.Text = $"Nombre D'étudiant :{dataGridView1.RowCount}";
-
+           
+            dataGridView1.Refresh();
+        }
+        private void Init()
+        {
+            dataGridView1.Rows[0].Selected = true;
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -110,15 +121,16 @@ namespace _3ilAdministrationPlatforme
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //selectione une ligne et ouvre le formulaire de modification en fonction des donne de cette ligne 
-            if(e.RowIndex == 0)
+            if(e.RowIndex != null)
             {
-                this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiantt;
+                this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
                 tbId.Text = this.OldEtudiantt.Id.ToString();
                 tbName.Text = this.OldEtudiantt.Nom;
                 tbPrenom.Text = this.OldEtudiantt.Prenom;
                 tbEmail.Text = this.OldEtudiantt.Email;
                 comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
                 comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
+                this.Refresh();
             }
             //ModifierEtudiant md = new ModifierEtudiant();
             //md.Show();
@@ -129,6 +141,125 @@ namespace _3ilAdministrationPlatforme
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //modifier les donne avant d'afficher
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count >0)
+            {
+                this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
+                tbId.Text = this.OldEtudiantt.Id.ToString();
+                tbName.Text = this.OldEtudiantt.Nom;
+                tbPrenom.Text = this.OldEtudiantt.Prenom;
+                tbEmail.Text = this.OldEtudiantt.Email;
+                comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
+                comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
+                this.Refresh();
+            }
+        }
+        public void Clear()
+        {   
+            tbId.Clear();
+            tbEmail.Clear();
+            tbName.Clear();
+            tbPrenom.Clear();
+        }
+
+        private async void btnModifier_Click(object sender, EventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:7219");
+
+            Etudiant etudiantt = new Etudiant();
+            string Id = tbId.Text;
+            etudiantt.Id = Int32.Parse(Id); 
+            etudiantt.Nom = tbName.Text;
+            etudiantt.Email = tbEmail.Text;
+            etudiantt.Prenom = tbPrenom.Text;
+            string Groupes = comboGRoupe.Text;
+            if (Groupes != null)
+            {
+                //l'id correspondant a la promotion MS2D-Fa = 4
+                if (Groupes == "MS2D-FA")
+                {
+                    Groupes = "4";
+                }
+                else
+                {
+                    // l'id 7 correspond a MS2D-FE
+                    Groupes = "7";
+                }
+            }
+            etudiantt.GroupeId = Int32.Parse(Groupes);
+            string Promotions = comboPromo.Text;
+            if (Promotions != null)
+            {
+                //l'id correspondant a la promotion MS2D-Fa = 4
+                if (Promotions == "2022-2023")
+                {
+                    Promotions = "1";
+                }
+                else
+                {
+                    // l'id 7 correspond a MS2D-FE
+                    Promotions = "2";
+                }
+            }
+            etudiantt.PromotionId = Int32.Parse(Promotions);
+
+            HttpResponseMessage response = await client.PutAsJsonAsync("api/Etudiants/" + etudiantt.Id, etudiantt);
+            Clear();
+            
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:7219");
+
+            Etudiant etudiantt = new Etudiant();
+            string Id = tbId.Text;
+            etudiantt.Id = Int32.Parse(Id);
+            etudiantt.Nom = tbName.Text;
+            etudiantt.Email = tbEmail.Text;
+            etudiantt.Prenom = tbPrenom.Text;
+            string Groupes = comboGRoupe.Text;
+            if (Groupes != null)
+            {
+                //l'id correspondant a la promotion MS2D-Fa = 4
+                if (Groupes == "MS2D-FA")
+                {
+                    Groupes = "4";
+                }
+                else
+                {
+                    // l'id 7 correspond a MS2D-FE
+                    Groupes = "7";
+                }
+            }
+            etudiantt.GroupeId = Int32.Parse(Groupes);
+            string Promotions = comboPromo.Text;
+            if (Promotions != null)
+            {
+                //l'id correspondant a la promotion MS2D-Fa = 4
+                if (Promotions == "2022-2023")
+                {
+                    Promotions = "1";
+                }
+                else
+                {
+                    // l'id 7 correspond a MS2D-FE
+                    Promotions = "2";
+                }
+            }
+            etudiantt.PromotionId = Int32.Parse(Promotions);
+
+            HttpResponseMessage response = await client.DeleteAsync("api/Etudiants/" + etudiantt.Id);
+            Form1 frm = new Form1();
+            frm.Show();
+            this.Close();
+            
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using ApiEnd.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace _3ilAdministrationPlatforme.Data
     {
         public Data()
         {
-            List<Etudiantt> Etudiants = new List<Etudiantt>();
+            //List<Etudiantt> Etudiants = new List<Etudiantt>();
         }
     }
 }
