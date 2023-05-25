@@ -14,11 +14,10 @@ namespace _3ilAdministrationPlatforme
         public string Email { get; set; } = string.Empty;
 
         public int GroupeId { get; set; }
-        
+
         public int PromotionId { get; set; }
 
-        //public string GroupeName { get; set; }
-        //public string PromotionName { get; set; }
+       
         public Etudiant()
         {
 

@@ -19,6 +19,9 @@
     }
 
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
 
 <style>
     table {
@@ -45,6 +48,26 @@
         width: 300px;
     }
 </style>
+@section Scripts {
+    <script>
+        $(function () {
+            $('#calendar').fullCalendar({
+                events: [
+                    {
+                        title: 'Événement 1',
+                        start: '2023-05-20'
+                    },
+                    {
+                        title: 'Événement 2',
+                        start: '2023-05-21',
+                        end: '2023-05-23'
+                    },
+                    // Ajoutez d'autres événements ici...
+                ]
+            });
+        });
+    </script>
+}
 <script>
     function filterTable() {
         var input = document.getElementById("filterInput").value.toUpperCase();
@@ -85,6 +108,7 @@
     <br />
     </div>
 <div class="text-center">
+    <div id="calendar"></div>
     <table id="etudiantTable" class="happyTable">
         <thead>
             <tr>

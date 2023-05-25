@@ -52,19 +52,69 @@ namespace _3ilAdministrationPlatforme
         private void Form1_Load(object sender, EventArgs e)
         {   // la meilleur solution etait de recupere les donne de lapi via le model 
             //mais je n'ais pa reussi et jai du cree une classe qui reproduit le modelle d'origine
+            //HttpClient client = new HttpClient();
+            //client.BaseAddress = new Uri("https://localhost:7219");
+            //HttpResponseMessage response = client.GetAsync("api/Etudiants").Result;
+            //if(response.IsSuccessStatusCode)
+            //{
+
+            //    var mp = response.Content.ReadAsAsync<IEnumerable<Etudiant>>().Result;
+            //    dataGridView1.DataSource = mp;
+            //}
+            //le nombre de ligne
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7219");
 
             HttpResponseMessage response = client.GetAsync("api/Etudiants").Result;
-            if(response.IsSuccessStatusCode)
-            {
 
-                var mp = response.Content.ReadAsAsync<IEnumerable<Etudiant>>().Result;
-                dataGridView1.DataSource = mp;
+            if (response.IsSuccessStatusCode)
+            {
+                var etudiants = response.Content.ReadAsAsync<IEnumerable<Etudiant>>().Result;
+
+                // Récupérer les groupes disponibles
+                HttpResponseMessage groupesResponse = client.GetAsync("api/Groupes").Result;
+                if (groupesResponse.IsSuccessStatusCode)
+                {
+                    var groupes = groupesResponse.Content.ReadAsAsync<IEnumerable<Groupe>>().Result;
+
+                    // Récupérer les promotions disponibles
+                    HttpResponseMessage promotionsResponse = client.GetAsync("api/Promotions").Result;
+                    if (promotionsResponse.IsSuccessStatusCode)
+                    {
+                        var promotions = promotionsResponse.Content.ReadAsAsync<IEnumerable<Promotion>>().Result;
+
+                        // Parcourir les étudiants et récupérer les noms du groupe et de la promotion
+                        var data = etudiants.Select(etudiant =>
+                        {
+                            var groupe = groupes.FirstOrDefault(g => g.Id == etudiant.GroupeId);
+                            var promotion = promotions.FirstOrDefault(p => p.Id == etudiant.PromotionId);
+                            var nomGroupe = (groupe != null) ? groupe.Name : string.Empty;
+                            var nomPromotion = (promotion != null) ? promotion.Year : string.Empty;
+                            return new
+                            {
+                                id = etudiant.Id,
+                                Nom = etudiant.Nom,
+                                Prenom = etudiant.Prenom,
+                                Email = etudiant.Email,
+                                Groupe = nomGroupe,
+                                Promotion = nomPromotion
+                            };
+                        }).ToList();
+
+                        dataGridView1.DataSource = data;
+                    }
+                    else
+                    {
+                        // Gérer les erreurs de requête pour les promotions
+                    }
+                }
+                else
+                {
+                    // Gérer les erreurs de requête pour les groupes
+                }
+
+                ToTal.Text = $"Nombre D'étudiant :{dataGridView1.RowCount}";
             }
-            //le nombre de ligne
-            ToTal.Text = $"Nombre D'étudiant :{dataGridView1.RowCount}";
-           
             dataGridView1.Refresh();
         }
         private void Init()
@@ -121,20 +171,39 @@ namespace _3ilAdministrationPlatforme
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //selectione une ligne et ouvre le formulaire de modification en fonction des donne de cette ligne 
-            if(e.RowIndex != null)
-            {
-                this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
-                tbId.Text = this.OldEtudiantt.Id.ToString();
-                tbName.Text = this.OldEtudiantt.Nom;
-                tbPrenom.Text = this.OldEtudiantt.Prenom;
-                tbEmail.Text = this.OldEtudiantt.Email;
-                comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
-                comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
-                this.Refresh();
-            }
+            //if(e.RowIndex != null)
+            //{
+            //    this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
+            //    tbId.Text = this.OldEtudiantt.Id.ToString();
+            //    tbName.Text = this.OldEtudiantt.Nom;
+            //    tbPrenom.Text = this.OldEtudiantt.Prenom;
+            //    tbEmail.Text = this.OldEtudiantt.Email;
+            //    comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
+            //    comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
+            //    this.Refresh();
+            //}
             //ModifierEtudiant md = new ModifierEtudiant();
             //md.Show();
-           
+
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                // Accéder aux valeurs des cellules de la ligne sélectionnée
+                string id = selectedRow.Cells["id"].Value.ToString();
+                string nom = selectedRow.Cells["Nom"].Value.ToString();
+                string prenom = selectedRow.Cells["Prenom"].Value.ToString();
+                string Email = selectedRow.Cells["Email"].Value.ToString();
+                string groupe = selectedRow.Cells["Groupe"].Value.ToString();
+                string promotion = selectedRow.Cells["Promotion"].Value.ToString();
+
+                tbId.Text = id;
+                tbName.Text = nom;
+                tbPrenom.Text = prenom;
+                tbEmail.Text = Email;
+                comboGRoupe.Text = groupe;
+                comboPromo.Text = promotion;
+            }
+
 
         }
 
@@ -145,17 +214,18 @@ namespace _3ilAdministrationPlatforme
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if(dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count >0)
-            {
-                this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
-                tbId.Text = this.OldEtudiantt.Id.ToString();
-                tbName.Text = this.OldEtudiantt.Nom;
-                tbPrenom.Text = this.OldEtudiantt.Prenom;
-                tbEmail.Text = this.OldEtudiantt.Email;
-                comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
-                comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
-                this.Refresh();
-            }
+            //ancien code
+            //if(dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count >0)
+            //{
+            //    this.OldEtudiantt = dataGridView1.SelectedRows[0].DataBoundItem as Etudiant;
+            //    tbId.Text = this.OldEtudiantt.Id.ToString();
+            //    tbName.Text = this.OldEtudiantt.Nom;
+            //    tbPrenom.Text = this.OldEtudiantt.Prenom;
+            //    tbEmail.Text = this.OldEtudiantt.Email;
+            //    comboGRoupe.Text = this.OldEtudiantt.GroupeId.ToString();
+            //    comboPromo.Text = this.OldEtudiantt.PromotionId.ToString();
+            //    this.Refresh();
+            //}
         }
         public void Clear()
         {   
@@ -208,8 +278,9 @@ namespace _3ilAdministrationPlatforme
             etudiantt.PromotionId = Int32.Parse(Promotions);
 
             HttpResponseMessage response = await client.PutAsJsonAsync("api/Etudiants/" + etudiantt.Id, etudiantt);
-            Clear();
-            
+            Form1 frm = new Form1();
+            frm.Show();
+            this.Close();
         }
 
         private async void button2_Click(object sender, EventArgs e)
@@ -258,8 +329,6 @@ namespace _3ilAdministrationPlatforme
             Form1 frm = new Form1();
             frm.Show();
             this.Close();
-            
-
         }
     }
 }

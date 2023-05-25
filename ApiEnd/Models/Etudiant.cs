@@ -11,11 +11,11 @@ namespace ApiEnd.Models
 
         [ForeignKey("GroupeId")]
         //pourquoi crée groupr de type groupe
-        //public Groupe Groupes { get; set; }
+      
         public int GroupeId { get; set; }
 
         [ForeignKey("PromotionId")]
-        //public Promotion Promotions { get; set; }
+        
         public int PromotionId { get; set; }
         public Etudiant()
         {

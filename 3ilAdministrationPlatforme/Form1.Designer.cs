@@ -53,6 +53,7 @@
             this.lbprenom = new System.Windows.Forms.Label();
             this.lbnom = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.Import = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +136,7 @@
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(152, 39);
             this.btnsave.TabIndex = 4;
-            this.btnsave.Text = "Crée";
+            this.btnsave.Text = "&Crée";
             this.btnsave.UseVisualStyleBackColor = true;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
@@ -146,7 +147,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 39);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Gérer";
+            this.button1.Text = "&Gérer";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -168,7 +169,7 @@
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(152, 39);
             this.btnModifier.TabIndex = 43;
-            this.btnModifier.Text = "Modifier";
+            this.btnModifier.Text = "&Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
@@ -296,9 +297,19 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 39);
             this.button2.TabIndex = 44;
-            this.button2.Text = "Suprimer";
+            this.button2.Text = "&Suprimer";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Import
+            // 
+            this.Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Import.Location = new System.Drawing.Point(724, 129);
+            this.Import.Name = "Import";
+            this.Import.Size = new System.Drawing.Size(152, 39);
+            this.Import.TabIndex = 45;
+            this.Import.Text = "&Import";
+            this.Import.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -306,6 +317,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1378, 801);
+            this.Controls.Add(this.Import);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.tbId);
@@ -363,6 +375,7 @@
         private System.Windows.Forms.Label lbprenom;
         private System.Windows.Forms.Label lbnom;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Import;
     }
 }
 
