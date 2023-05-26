@@ -16,7 +16,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.mobile</ApplicationId>
-		<ApplicationIdGuid>288fb636-7219-4e80-858a-644cb68395f7</ApplicationIdGuid>
+		<ApplicationIdGuid>3162cf06-6377-4cdd-8232-1df600cace1f</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -49,7 +49,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AForge.Video" Version="2.2.5" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 

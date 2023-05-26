@@ -1,24 +1,30 @@
-﻿namespace Mobile
+﻿using Microsoft.Maui.Controls;
+
+namespace Mobile
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnLoginClicked(object sender, EventArgs e)
         {
-            count++;
+            string username = UsernameEntry.Text;
+            string password = PasswordEntry.Text;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+            // Exemple de vérification basique
+            if (username == "admin" && password == "123456")
+            {
+                // Informations d'identification correctes, effectuez une action (par exemple, naviguez vers une autre page)
+                Navigation.PushAsync(new DashboardPage());
+            }
             else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            {
+                // Informations d'identification incorrectes, affichez un message d'erreur
+                DisplayAlert("Erreur de connexion", "Nom d'utilisateur ou mot de passe incorrect", "OK");
+            }
         }
     }
 }

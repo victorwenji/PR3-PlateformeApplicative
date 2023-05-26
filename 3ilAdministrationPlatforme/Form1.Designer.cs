@@ -310,6 +310,7 @@
             this.Import.TabIndex = 45;
             this.Import.Text = "&Import";
             this.Import.UseVisualStyleBackColor = true;
+            this.Import.Click += new System.EventHandler(this.Import_Click);
             // 
             // Form1
             // 
