@@ -84,6 +84,26 @@ namespace _3ilBorne
         {
             timer1.Start();
         }
+
+        private void comboCamera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbstatus_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
   

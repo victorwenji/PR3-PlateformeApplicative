@@ -33,9 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lb_titre = new System.Windows.Forms.Label();
-            this.lb_recherche = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnsave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.ToTal = new System.Windows.Forms.Label();
@@ -54,6 +52,7 @@
             this.lbnom = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.Import = new System.Windows.Forms.Button();
+            this.btnexport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,16 +65,6 @@
             this.lb_titre.Size = new System.Drawing.Size(510, 46);
             this.lb_titre.TabIndex = 0;
             this.lb_titre.Text = "3ilAdministrationPlatforme";
-            // 
-            // lb_recherche
-            // 
-            this.lb_recherche.AutoSize = true;
-            this.lb_recherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_recherche.Location = new System.Drawing.Point(12, 137);
-            this.lb_recherche.Name = "lb_recherche";
-            this.lb_recherche.Size = new System.Drawing.Size(148, 29);
-            this.lb_recherche.TabIndex = 1;
-            this.lb_recherche.Text = "Recherche : ";
             // 
             // dataGridView1
             // 
@@ -118,16 +107,6 @@
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(166, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(404, 34);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // btnsave
             // 
@@ -304,7 +283,7 @@
             // Import
             // 
             this.Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Import.Location = new System.Drawing.Point(724, 129);
+            this.Import.Location = new System.Drawing.Point(17, 139);
             this.Import.Name = "Import";
             this.Import.Size = new System.Drawing.Size(152, 39);
             this.Import.TabIndex = 45;
@@ -312,12 +291,24 @@
             this.Import.UseVisualStyleBackColor = true;
             this.Import.Click += new System.EventHandler(this.Import_Click);
             // 
+            // btnexport
+            // 
+            this.btnexport.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexport.Location = new System.Drawing.Point(722, 139);
+            this.btnexport.Name = "btnexport";
+            this.btnexport.Size = new System.Drawing.Size(152, 39);
+            this.btnexport.TabIndex = 46;
+            this.btnexport.Text = "&Export";
+            this.btnexport.UseVisualStyleBackColor = true;
+            this.btnexport.Click += new System.EventHandler(this.btnexport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1378, 801);
+            this.Controls.Add(this.btnexport);
             this.Controls.Add(this.Import);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnModifier);
@@ -336,9 +327,7 @@
             this.Controls.Add(this.ToTal);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnsave);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lb_recherche);
             this.Controls.Add(this.lb_titre);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -356,9 +345,7 @@
         #endregion
 
         private System.Windows.Forms.Label lb_titre;
-        private System.Windows.Forms.Label lb_recherche;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnsave;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label ToTal;
@@ -377,6 +364,7 @@
         private System.Windows.Forms.Label lbnom;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Import;
+        private System.Windows.Forms.Button btnexport;
     }
 }
 

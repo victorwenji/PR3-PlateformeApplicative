@@ -62,7 +62,7 @@
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker1.Location = new System.Drawing.Point(293, 172);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(190, 53);
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 53);
             this.dateTimePicker1.TabIndex = 46;
             // 
             // HomeForm

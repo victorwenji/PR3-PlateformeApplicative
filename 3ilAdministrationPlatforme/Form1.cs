@@ -13,20 +13,21 @@ using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Xml.Linq;
 using System.Reflection;
+using System.IO;
 
 namespace _3ilAdministrationPlatforme
 {
     public partial class Form1 : Form
     {
-        private Etudiant OldEtudiantt;
-        private readonly HttpClient _httpClient;
+       /* private Etudiant OldEtudiantt;
+        private readonly HttpClient _httpClient;*/
         public Form1()
         {
             InitializeComponent();
           
         }
 
-        public async void ListEtudiant(object sender, EventArgs e)
+       /* public async void ListEtudiant(object sender, EventArgs e)
         {
             //string Url = "https://localhost:7219/api/Etudiant";
             //HttpResponseMessage request = await _httpClient.GetAsync(Url);
@@ -40,7 +41,7 @@ namespace _3ilAdministrationPlatforme
             //    }
             //}
 
-        }
+        }*/
 
         private void btnsave_Click(object sender, EventArgs e)
         {
@@ -130,7 +131,8 @@ namespace _3ilAdministrationPlatforme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Groupes groupes = new Groupes();
+            groupes.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -333,7 +335,70 @@ namespace _3ilAdministrationPlatforme
 
         private void Import_Click(object sender, EventArgs e)
         {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "CSV (*.csv)|*.csv";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = ofd.FileName;
 
+                try
+                {
+                    // Lire le contenu du fichier CSV
+                    DataTable dataTable = ReadCsvFile(filePath);
+                    /*DataTable dataTable = ReadCsvFile(filePath);*/
+
+                    // Afficher les données dans le DataGridView
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'importation du fichier : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private DataTable ReadCsvFile(string filePath)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string[] headers = reader.ReadLine().Split(',');
+
+                foreach (string header in headers)
+                {
+                    dataTable.Columns.Add(header);
+                }
+
+                while (!reader.EndOfStream)
+                {
+                    string[] rows = reader.ReadLine().Split(',');
+                    dataTable.Rows.Add(rows);
+                }
+            }
+
+            return dataTable;
+        }
+
+        private void btnexport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "CSV (*.csv)|*.csv";
+            fileDialog.FileName = "Data.csv";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                StringBuilder sb = new StringBuilder();
+                IEnumerable<string> columnNames = dataGridView1.Columns.Cast<DataGridViewColumn>().Select(column => column.HeaderText);
+                sb.AppendLine(string.Join(",", columnNames));
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    IEnumerable<string> fields = row.Cells.Cast<DataGridViewCell>().Select(cell => cell.Value.ToString());
+                    sb.AppendLine(string.Join(",", fields));
+                }
+                File.WriteAllText(fileDialog.FileName, sb.ToString());
+                MessageBox.Show("Données exportées avec succès.");
+            }
         }
     }
 }

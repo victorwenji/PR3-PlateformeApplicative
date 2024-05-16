@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mobile.ViewModels;
 
 namespace Mobile
 {
@@ -14,6 +15,10 @@ namespace Mobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<Login>();
+            builder.Services.AddSingleton<LoginPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

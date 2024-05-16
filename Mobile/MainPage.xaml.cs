@@ -1,24 +1,27 @@
 ﻿using Microsoft.Maui.Controls;
+using System.Text;
 
-namespace Mobile
+namespace Mobile;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void OnLoginClicked(object sender, EventArgs e)
-        {
-            string username = UsernameEntry.Text;
+
+    private void OnLoginClicked(object sender, EventArgs e)
+    {
+       
+        string username = UsernameEntry.Text;
             string password = PasswordEntry.Text;
 
             // Exemple de vérification basique
             if (username == "admin" && password == "123456")
             {
                 // Informations d'identification correctes, effectuez une action (par exemple, naviguez vers une autre page)
-                Navigation.PushAsync(new DashboardPage());
+                Navigation.PushAsync(new Page1());
             }
             else
             {
@@ -27,4 +30,4 @@ namespace Mobile
             }
         }
     }
-}
+

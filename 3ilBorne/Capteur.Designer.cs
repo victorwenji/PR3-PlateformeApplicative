@@ -50,6 +50,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(543, 320);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lb_titre
             // 
@@ -79,6 +80,7 @@
             this.comboCamera.Name = "comboCamera";
             this.comboCamera.Size = new System.Drawing.Size(243, 37);
             this.comboCamera.TabIndex = 40;
+            this.comboCamera.SelectedIndexChanged += new System.EventHandler(this.comboCamera_SelectedIndexChanged);
             // 
             // btnScane
             // 
@@ -100,6 +102,7 @@
             this.Lbstatus.Size = new System.Drawing.Size(79, 29);
             this.Lbstatus.TabIndex = 42;
             this.Lbstatus.Text = "Status";
+            this.Lbstatus.Click += new System.EventHandler(this.Lbstatus_Click);
             // 
             // textBox1
             // 
@@ -109,6 +112,7 @@
             this.textBox1.Size = new System.Drawing.Size(209, 157);
             this.textBox1.TabIndex = 43;
             this.textBox1.Text = " ";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnstart
             // 

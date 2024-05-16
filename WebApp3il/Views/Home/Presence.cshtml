@@ -74,12 +74,15 @@
         var table = document.getElementById("etudiantTable");
         var tr = table.getElementsByTagName("tr");
         for (var i = 0; i < tr.length; i++) {
-            var tdNom = tr[i].getElementsByTagName("td")[0];
+            var tdNom = tr[i].getElementsByTagName("td")[0]; 
+            var tdEmagement = tr[i].getElementsByTagName("td")[2];
             var tdStatus = tr[i].getElementsByTagName("td")[3];
-            if (tdNom || tdStatus ) {
+            if (tdNom || tdEmagement || tdStatus  ) {
                 var nom = tdNom.textContent || tdNom.innerText;
+                var Emagement = tdEmagement.textContent || tdEmagement.innerText;
                 var status = tdStatus.textContent || tdStatus.innerText;
                 if (nom.toUpperCase().indexOf(input) > -1 ||
+                    Emagement.toString().indexOf(input) > -1 ||
                     status.toUpperCase().indexOf(input) > -1 ) {
                     tr[i].style.display = "";
                 } else {

@@ -35,16 +35,15 @@
             this.txtpasseword = new System.Windows.Forms.TextBox();
             this.txtIden = new System.Windows.Forms.TextBox();
             this.btnsave = new System.Windows.Forms.Button();
-            this.btnadmin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(333, 69);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(249, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 31);
+            this.label1.Size = new System.Drawing.Size(106, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
@@ -52,9 +51,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(134, 312);
+            this.label2.Location = new System.Drawing.Point(61, 302);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 39);
+            this.label2.Size = new System.Drawing.Size(161, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mot de passe ";
             // 
@@ -62,56 +61,45 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(134, 189);
+            this.label3.Location = new System.Drawing.Point(61, 185);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 39);
+            this.label3.Size = new System.Drawing.Size(128, 31);
             this.label3.TabIndex = 2;
-            this.label3.Text = "identifiant";
+            this.label3.Text = "Identifiant";
             // 
             // txtpasseword
             // 
-            this.txtpasseword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpasseword.Location = new System.Drawing.Point(330, 312);
+            this.txtpasseword.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpasseword.Location = new System.Drawing.Point(257, 299);
             this.txtpasseword.Name = "txtpasseword";
-            this.txtpasseword.Size = new System.Drawing.Size(317, 27);
+            this.txtpasseword.Size = new System.Drawing.Size(317, 38);
             this.txtpasseword.TabIndex = 3;
             // 
             // txtIden
             // 
-            this.txtIden.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIden.Location = new System.Drawing.Point(330, 195);
+            this.txtIden.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIden.Location = new System.Drawing.Point(257, 182);
             this.txtIden.Name = "txtIden";
-            this.txtIden.Size = new System.Drawing.Size(317, 27);
+            this.txtIden.Size = new System.Drawing.Size(317, 38);
             this.txtIden.TabIndex = 4;
             // 
             // btnsave
             // 
             this.btnsave.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsave.Location = new System.Drawing.Point(481, 388);
+            this.btnsave.ForeColor = System.Drawing.Color.Black;
+            this.btnsave.Location = new System.Drawing.Point(233, 420);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(166, 47);
             this.btnsave.TabIndex = 5;
-            this.btnsave.Text = "Enregistrer";
+            this.btnsave.Text = "Connexion";
             this.btnsave.UseVisualStyleBackColor = true;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
-            // 
-            // btnadmin
-            // 
-            this.btnadmin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadmin.Location = new System.Drawing.Point(667, 508);
-            this.btnadmin.Name = "btnadmin";
-            this.btnadmin.Size = new System.Drawing.Size(121, 47);
-            this.btnadmin.TabIndex = 6;
-            this.btnadmin.Text = "Admin";
-            this.btnadmin.UseVisualStyleBackColor = true;
-            this.btnadmin.Click += new System.EventHandler(this.btnadmin_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 567);
-            this.Controls.Add(this.btnadmin);
+            this.ClientSize = new System.Drawing.Size(676, 567);
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.txtIden);
             this.Controls.Add(this.txtpasseword);
@@ -139,6 +127,5 @@
         private System.Windows.Forms.TextBox txtpasseword;
         private System.Windows.Forms.TextBox txtIden;
         private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.Button btnadmin;
     }
 }
