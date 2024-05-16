@@ -6,31 +6,31 @@
     var ListeGroupe = ViewData["Groupe"] as List<Groupe>;
     var ListePromotion = ViewData["Promotion"] as List<Promotion>;
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
+    .table {
         width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        margin: auto;
     }
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
+    th, td {
         padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
     }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-
+    th {
+        background-color: #f2f2f2;
+        color: #ff4500;
     }
 
-    .filter-input {
-        margin-bottom: 10px;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 300px;
+    tr:hover {
+        background-color: #1e90ff;
     }
+
+    
 </style>
 <script>
     function filterTable() {
@@ -57,18 +57,17 @@
     }
 </script>
 <center>
-    <h2>
+    <h2 style="color: #1e90ff;">
         Liste des étudiants
     </h2>
 </center>
 <div>
-    <h4>
-        <label for="filterInput">Recherche : </label>
-        <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Rechercher par groupe, nom ou promotion...">
-    </h4>
+    <label style ="color: #1e90ff;" for="filterInput">Recherche :</label >
+    <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Rechercher...">
     <br />
 </div>
 <div class="text-center">
+    <br />
     <table id="etudiantTable" class="table">
         <thead>
             <tr>
