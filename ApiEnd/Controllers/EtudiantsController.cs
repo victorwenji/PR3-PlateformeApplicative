@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiEnd.Data;
 using ApiEnd.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Identity.Web.Resource;
 
 namespace ApiEnd.Controllers
 {
-    [Route("api/[controller]")]
+    //[Authorize]
     [ApiController]
+    [Route("api/[controller]")]
+    //[RequiredScope(RequiredScopesConfigurationKey ="AzireAd:scopes")]
     public class EtudiantsController : ControllerBase
     {
         private readonly AllContext _context;
@@ -20,15 +24,17 @@ namespace ApiEnd.Controllers
         {
             _context = context;
         }
-
+        //Qobo781695
         // GET: api/Etudiants
         [HttpGet]
+        [RequiredScope(RequiredScopesConfigurationKey = "AzireAd:scopes")]
+        //[Authorize()]
         public async Task<ActionResult<IEnumerable<Etudiant>>> GetEleves()
         {
-          if (_context.Eleves == null)
-          {
-              return NotFound();
-          }
+            if (_context.Eleves == null)
+            {
+                return NotFound();
+            }
             return await _context.Eleves.ToListAsync();
         }
 

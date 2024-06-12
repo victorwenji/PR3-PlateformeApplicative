@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +14,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Xml.Linq;
 using System.Reflection;
 using System.IO;
+using Moq.Protected;
+using Moq;
+using NUnit.Framework;
+using System.Threading;
 
 namespace _3ilAdministrationPlatforme
 {
@@ -283,6 +287,56 @@ namespace _3ilAdministrationPlatforme
             Form1 frm = new Form1();
             frm.Show();
             this.Close();
+        }
+
+        [TestFixture]
+        public class Form1ButtonClickTests
+        {
+            private Mock<HttpMessageHandler> _httpMessageHandlerMock;
+            private HttpClient _httpClient;
+            private Form1 _form;
+
+            [SetUp]
+            public void Setup()
+            {
+                _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
+                _httpClient = new HttpClient(_httpMessageHandlerMock.Object);
+                _form = new Form1();
+            }
+
+            [Test]
+            public async  Task BtnModifier_Click_ValidEtudiant_ModifiesEtudiant()
+            {
+                // Arrange
+                var etudiant = new Etudiant
+                {
+                    Id = 1,
+                    Nom = "John",
+                    Prenom = "Doe",
+                    Email = "john.doe@example.com",
+                    GroupeId = 1,
+                    PromotionId = 1
+                };
+
+                var responseMessage = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(etudiant))
+                };
+
+                _httpMessageHandlerMock.Protected()
+                    .Setup<Task<HttpResponseMessage>>(
+                        "SendAsync",
+                        ItExpr.IsAny<HttpRequestMessage>(),
+                        ItExpr.IsAny<CancellationToken>()
+                    )
+                    .ReturnsAsync(responseMessage);
+
+                // Act
+                _form.btnModifier_Click(null, null);
+
+                // Assert
+                // Add necessary assertions to verify the expected outcome
+            }
         }
 
         private async void button2_Click(object sender, EventArgs e)

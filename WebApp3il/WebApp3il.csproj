@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -16,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="AForge.Video" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.18.1" />
   </ItemGroup>
 
 </Project>

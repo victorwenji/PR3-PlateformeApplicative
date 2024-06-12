@@ -38,7 +38,6 @@ namespace WebApp3il.Controllers
                     string results2 = getData2.Content.ReadAsStringAsync().Result;
                     Presences = JsonConvert.DeserializeObject<List<Presence>>(results2);
 
-
                 }
                 else
                 {

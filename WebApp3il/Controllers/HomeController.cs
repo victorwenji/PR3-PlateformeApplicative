@@ -1,5 +1,6 @@
 ﻿using ApiEnd.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http.Headers;
@@ -9,6 +10,7 @@ namespace WebApp3il.Controllers
 {
     public class HomeController : Controller
     {
+       
         private readonly ILogger<HomeController> _logger;
 
         string baseURL = "https://localhost:7219/";
@@ -24,7 +26,8 @@ namespace WebApp3il.Controllers
             List<Promotion> Promotions = new List<Promotion>();
             List<Presence> Presences = new List<Presence>();
 
-            using (var client = new HttpClient())
+            using (
+                var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseURL);
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -37,7 +40,7 @@ namespace WebApp3il.Controllers
 
                 if (getData1.IsSuccessStatusCode)
                 {
-                    string results1 = getData1.Content.ReadAsStringAsync().Result;
+                    string results1 =await getData1.Content.ReadAsStringAsync();
                     Etudiants = JsonConvert.DeserializeObject<List<Etudiant>>(results1);
 
                     string results2 = getData2.Content.ReadAsStringAsync().Result;
