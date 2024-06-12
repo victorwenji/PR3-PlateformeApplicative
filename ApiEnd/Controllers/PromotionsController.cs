@@ -21,7 +21,7 @@ namespace ApiEnd.Controllers
             _context = context;
         }
 
-        // GET: api/Promotions
+        // GET: api/Promotionsd
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Promotion>>> GetPromotion()
         {
